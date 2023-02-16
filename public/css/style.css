@@ -1,0 +1,42 @@
+    /* Estilize o formulário */
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ccc;
+        padding: 20px;
+    }
+
+    /* Estilize o botão de cadastro */
+    button[type="submit"] {
+        background-color: #3e8e41;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #2f5a2f;
+    }
+
+    /* Estilize os campos de entrada */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }

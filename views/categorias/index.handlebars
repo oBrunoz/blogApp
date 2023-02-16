@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-body">
+        <h1 class="text-primary display-3 my-4 text-center">Categorias</h1>
+        <hr />
+        {{#each categorias}}
+            <a class="btn btn-outline-dark" style="transition: 0.5s; font-size: 18px; padding: 5px 20px; border-radius: 50px;" href="/categorias/{{slug}}"><h5>{{nome}}</h5></a>
+            {{else}}
+        {{/each}}
+
+    </div>
+</div>
+

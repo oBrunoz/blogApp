@@ -1,0 +1,16 @@
+<h1 class="text-primary display-3 my-4 text-center">{{categorias.nome}}</h1>
+
+{{#each postagens}}
+<ul class="list-group">
+  <li class="list-group-item">
+    <h5 class="mb-1 text-primary">{{titulo}}</h5>
+    <p class="mb-1">{{desc}}</p>
+    <a href="/posts/{{slug}}"><button type="button" style="float: right; margin: 5%; position: relative;" class="btn btn-outline-success btn-block my-4">Leia mais</button></a>
+    <hr>
+    <small >Data de publicação: {{date}}</small>
+  </li>
+</ul>
+
+{{else}}
+    <h5 class="">Nenhuma postagem!</h5>
+{{/each}}
