@@ -16,6 +16,7 @@ const moment = require('moment');
 const usuarios = require('./routes/user');
 const passport = require('passport');
 require('./config/auth')(passport);
+const db = require('./config/db');
 
 //Config:
 //Session
@@ -52,8 +53,7 @@ app.use(bodyparser.json());
 
 //Mongoose
 mongoose.set('strictQuery', true);
-mongoose
-    .connect('mongodb://127.0.0.1/blogapp')
+mongoose.connect(db.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         console.log('Conectado ao Mongo!');
     })
