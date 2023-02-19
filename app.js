@@ -53,7 +53,7 @@ app.use(bodyparser.json());
 
 //Mongoose
 mongoose.set('strictQuery', true);
-mongoose.connect(db.mongoURI)
+mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, })
     .then(() => {
         console.log('Conectado ao Mongo!');
     })
