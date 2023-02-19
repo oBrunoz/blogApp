@@ -16,6 +16,7 @@ const moment = require('moment');
 const usuarios = require('./routes/user');
 const passport = require('passport');
 require('./config/auth')(passport);
+const db = require('./config/db');
 
 //Config:
 //Session
@@ -54,8 +55,8 @@ app.use(bodyparser.json());
 mongoose.set('strictQuery', true);
 const connectDB = async () => {
     try{
-        const conn = await mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, })
-        console.log(`Conectado ao Mongo: ${conn.connection.host}`);
+        const conn = await mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+        console.log(`Conectado ao Mongo!`);
     } catch(err) {
         console.log(err);
         process.exit(1);
