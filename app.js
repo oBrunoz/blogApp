@@ -17,6 +17,7 @@ const usuarios = require('./routes/user');
 const passport = require('passport');
 require('./config/auth')(passport);
 const db = require('./config/db');
+const PORT = process.env.PORT || 8081
 
 //Config:
 //Session
@@ -53,13 +54,20 @@ app.use(bodyparser.json());
 
 //Mongoose
 mongoose.set('strictQuery', true);
-mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, })
-    .then(() => {
-        console.log('Conectado ao Mongo!');
-    })
-    .catch((erro) => {
-        console.log(`Ocorreu um erro ao se conectar ao MongoDB: ${erro}`);
-    });
+const connectDB = async () => {
+    try{
+        const conn = await mongoose.connect(db.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, })
+        .then(() => {
+            console.log('Conectado ao Mongo!');
+        })
+        .catch((erro) => {
+            console.log(`Ocorreu um erro ao se conectar ao MongoDB: ${erro}`);
+        });
+    } catch(err) {
+        console.log(err);
+        process.exit(1);
+    }
+}
 
 //public
 app.use(express.static(path.join(__dirname, 'public')));
@@ -135,6 +143,6 @@ app.use(('/404'), (req, res) => {
 app.use('/admin', admin);
 app.use('/users', usuarios);
 
-app.listen(8081, () => {
+app.listen(PORT, () => {
     console.log('Servidor rodando na url http://localhost:8081');
 });
