@@ -143,6 +143,8 @@ app.use(('/404'), (req, res) => {
 app.use('/admin', admin);
 app.use('/users', usuarios);
 
-app.listen(PORT, () => {
-    console.log('Servidor rodando na url http://localhost:8081');
-});
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log('Servidor rodando na url http://localhost:8081');
+    });
+})
