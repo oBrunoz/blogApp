@@ -1,3 +1,5 @@
 study_nodejs/
 routes/
 models/
+.env/
+db.js
